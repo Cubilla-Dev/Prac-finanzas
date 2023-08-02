@@ -1,10 +1,10 @@
 const connection = require('../database/db')
 
 
-const register = (name, email, password) => {
+const register = (firtname, lastname, email, password) => {
     return new Promise((resolve, reject)=>{
         const addSql = "email = ?"
-        connection.query(addSql, [name, email, password], (err, result)=>{
+        connection.query(addSql, [firtname, lastname, email, password], (err, result)=>{
             if(err){
                 console.log('[REGISTER ERROR] - ', err.message)
             }else{

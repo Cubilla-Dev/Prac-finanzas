@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 
 //pra encriptar la contraseña
-const encrypt = async (textPlain: string) => {
+const encrypt = async (textPlain) => {
     const hash = await bcrypt.hash(textPlain, 10)
     return hash
 }

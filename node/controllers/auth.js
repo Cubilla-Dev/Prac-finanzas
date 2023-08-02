@@ -4,18 +4,23 @@ const { encrypt, compare } = require('../helpers/handleBcrypt')
 const { obtainPass, obtainEmail, register } = require('../models/authModel')
 
 
-const registerCtrl = async (req, res, next) => {
+const registerCtrl = async (req, res) => {
     try {
         
-        const { name, email, password } = req.body
-        const passwordhash = await encrypt(password)
-        const checkRegist = await register(name, email, password)
-        if(checkRegist){
-            res.send({ 
-                data: 'se registro correctamente',
-                token: passwordhash //crear un token y pasarlo
-            })
-        }
+        const { firtname, lastname, email, password } = req.body
+        console.log(firtname, lastname, email)
+        // const passwordhash = await encrypt(password)
+        // const checkRegist = await register(firtname, lastname, email, password)
+        // if(checkRegist){
+        //     res.send({ 
+        //         redirect: '/',
+        //         token: passwordhash //crear un token y pasarlo
+        //     })
+        // }
+        res.send({ 
+            redirect: '/',
+            // token: passwordhash //crear un token y pasarlo
+        })
 
     }catch{
         res.status(404)
@@ -23,22 +28,32 @@ const registerCtrl = async (req, res, next) => {
     }
 }
 
-const loginCtrl = async (req, res, next) => {
+const loginCtrl = async (req, res) => {
     try {
         const { email, password} = req.body
-        //obtener el email y verificar si tambien es por las dudas
-        const passObtaiDB = await obtainPass(email);
-        if(!passObtaiDB){
-            res.status(404)
-            res.send({error: 'Password not found'})
-        }
-        const checkPassword = await compare(password, passObtaiDB)
-        if (checkPassword){
-            res.send({
-                data: passObtaiDB,
-                token: 'dfgdfgd'
-            })
-        }
+        console.log(email, password)
+        // //obtener el email y verificar si tambien bien es por las dudas
+        // const passObtaiDB = await obtainPass(email);
+        // if(!passObtaiDB){
+        //     res.status(404)
+        //     res.send({error: 'Password not found'})
+        // }
+        // const checkPassword = await compare(password, passObtaiDB)
+        // Si el usuario es autenticado exitosamente, generar un token
+        // const user = { id: userId, username: username }; // Datos del usuario que desees incluir en el token
+        // const secretKey = 'tu_clave_secreta'; // Clave secreta para firmar el token (puede ser cualquier string)
+
+        // const token = jwt.sign(user, secretKey, { expiresIn: '1h' }); // El token expirará en 1 hora
+
+        // if (checkPassword){
+        //     res.send({
+        //         redirect: '/',
+        //         token: token
+        //     })
+        // }
+        res.send({
+            redirect: '/'
+        })
 
     }catch{
         res.status(404)

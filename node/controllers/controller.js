@@ -19,6 +19,7 @@ controller.presForm  = (req, res) => {
 
 controller.dowlPDF = (req, res) => {
     try{
+        //tiene que ser dinamico
         const filepath = path.join(__dirname, '../pdfs/presupuesto.pdf')
         res.sendFile(filepath, (error) => {
             if(error){
@@ -31,14 +32,14 @@ controller.dowlPDF = (req, res) => {
     }
 }
 
-controller.logeo = (req, res) => {
-    try {
-        const {name, password} = req.body
-        database.logeo(name, password)
-        res.redirect('home')
-    }catch{
+// controller.logeo = (req, res) => {
+//     try {
+//         const {name, password} = req.body
+//         database.logeo(name, password)
+//         res.redirect('home')
+//     }catch{
 
-    }
-}
+//     }
+//}
 
 module.exports = controller
