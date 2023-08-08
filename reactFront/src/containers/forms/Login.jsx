@@ -11,8 +11,9 @@ const Login = () => {
             .then(response => {
                 const token = response.data.token;
                 localStorage.setItem('token', token);
-                console.log(response.data.redirect)
-                navigate(response.data.redirect)
+                // console.log(response.data.redirect)
+                // navigate(response.data.redirect)
+                window.location.reload();
             })
             .catch((error) => {
                 // Manejar cualquier error que ocurra durante la solicitud

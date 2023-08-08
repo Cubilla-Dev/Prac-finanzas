@@ -2,6 +2,7 @@ const path = require('path');
 //const database = require('../models/db.requests')
 const { encrypt, compare } = require('../helpers/handleBcrypt')
 const { obtainPass, obtainEmail, register } = require('../models/authModel')
+const jwt = require('jsonwebtoken')
 
 
 const registerCtrl = async (req, res) => {
@@ -32,19 +33,20 @@ const loginCtrl = async (req, res) => {
     try {
         const { email, password} = req.body
         console.log(email, password)
-        // //obtener el email y verificar si tambien bien es por las dudas
+            //obtener el email y verificar si tambien bien es por las dudas
         // const passObtaiDB = await obtainPass(email);
         // if(!passObtaiDB){
         //     res.status(404)
         //     res.send({error: 'Password not found'})
         // }
-        // const checkPassword = await compare(password, passObtaiDB)
-        // Si el usuario es autenticado exitosamente, generar un token
-        // const user = { id: userId, username: username }; // Datos del usuario que desees incluir en el token
-        // const secretKey = 'tu_clave_secreta'; // Clave secreta para firmar el token (puede ser cualquier string)
+        //const checkPassword = await compare(password, passObtaiDB)
+            //Si el usuario es autenticado exitosamente, generar un token
+        //const user = { id: userId, username: username }; // Datos del usuario que desees incluir en el token
+        const user = { id: '23', username: 'username' }; //borrar despues
+        const secretKey = 'tu_clave_secreta'; // Clave secreta para firmar el token (puede ser cualquier string)
 
-        // const token = jwt.sign(user, secretKey, { expiresIn: '1h' }); // El token expirará en 1 hora
-
+        const token = jwt.sign(user, secretKey, { expiresIn: '1h' }); // El token expirará en 1 hora
+        console.log('este es el token ' + token)
         // if (checkPassword){
         //     res.send({
         //         redirect: '/',
@@ -52,7 +54,8 @@ const loginCtrl = async (req, res) => {
         //     })
         // }
         res.send({
-            redirect: '/'
+            redirect: '/',
+            token: token
         })
 
     }catch{
