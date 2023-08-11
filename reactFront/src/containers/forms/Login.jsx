@@ -1,18 +1,15 @@
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 const Login = () => {
     const {register, handleSubmit, formState: { errors } } = useForm()
-    const navigate = useNavigate()
+
 
     const onSubmit = (data) => {
         axios.post('http://127.0.0.1:3000/login', data)
             .then(response => {
                 const token = response.data.token;
                 localStorage.setItem('token', token);
-                // console.log(response.data.redirect)
-                // navigate(response.data.redirect)
                 window.location.reload();
             })
             .catch((error) => {

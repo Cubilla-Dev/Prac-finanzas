@@ -1,17 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../containers/Home";
-import Login from '../containers/forms/Login'
-//import AuthProvider from "../auth/AuthProvider";
 import {PrivateRouter} from "../routers/PrivateRouter"
 import {PublicRouter} from "../routers/PublicRouter"
+
+import Home from "../containers/Home";
+import Login from '../containers/forms/Login'
+import Register from '../containers/forms/Register'
+import Blog from '../containers/Blog'
+
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element:
-            <PrivateRouter>
+            //<PublicRouter>
                 <Home/>
-            </PrivateRouter>
+            //</PublicRouter>
     },
     {
         path: '/login',
@@ -20,8 +23,19 @@ export const router = createBrowserRouter([
                 <Login/>
             </PublicRouter> 
     },
-    // {
-    //     path: '/practica',
-    //     element: <AuthProvider/>
-    // }
+    {
+        path: '/register',
+        element:
+            <PublicRouter>
+                <Register/>
+            </PublicRouter> 
+    },
+    {
+        path: '/blog',
+        element:
+            <PrivateRouter>
+                <Blog/>
+            </PrivateRouter> 
+    },
+
 ])
