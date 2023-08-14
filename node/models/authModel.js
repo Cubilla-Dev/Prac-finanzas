@@ -1,10 +1,10 @@
 const connection = require('../database/db')
 
 
-const register = (firtname, lastname, email, password) => {
+const register = (firtname, email, password) => {
     return new Promise((resolve, reject)=>{
-        const addSql = "email = ?"
-        connection.query(addSql, [firtname, lastname, email, password], (err, result)=>{
+        const addSql = 'INSERT INTO registrations (name, email, password) VALUES (?, ?, ?)'
+        connection.query(addSql, [firtname, email, password], (err, result)=>{
             if(err){
                 console.log('[REGISTER ERROR] - ', err.message)
             }else{
@@ -39,7 +39,7 @@ const obtainEmail = (email) => {
 const obtainPass = (email) => {
     return new Promise((resolve, reject)=>{
         //comando sql mejorar
-        const addSql = "SELECT password FROM users WHERE email = ?"
+        const addSql = "SELECT user_id, password FROM registrations WHERE email = ?"
         connection.query(addSql, [email], (err, result)=>{
             if(err){
                 console.log('[ERROR AL OBTENER PASS] - ', err.message);
@@ -49,9 +49,9 @@ const obtainPass = (email) => {
                     // Si no se encontró un usuario con el email proporcionado, rechaza la promesa
                     reject(new Error('Usuario no encontrado'));
                 } else {
-                    console.log('Password obtenida');
+                    console.log('Password obtenida ' + result[0].user_id);
                     // Resuelve la promesa con la contraseña encontrada
-                    resolve(result[0].password);
+                    resolve({user_id: result[0].user_id, passObtaiDB: result[0].password});
                 }
             }
         })

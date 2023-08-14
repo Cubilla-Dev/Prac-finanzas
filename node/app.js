@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors');
 const router = require('./routers/router')
-const auth = require('./routers/auth')
+const routerAuth = require('./routers/routerAuth')
 
 
 app.use(express.json())
@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(cors()); 
 
 
-app.use(auth)
+app.use(routerAuth)
 app.use(router)
 
 
