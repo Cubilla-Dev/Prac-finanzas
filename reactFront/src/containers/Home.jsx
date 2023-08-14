@@ -7,7 +7,7 @@ let titu = 'Como mejorar tus finanzas'
 let arra = ['mejora', 'fiananzas', 'personal']
 
 const Home = () => {
-    const { login, logout } = useContext(AuthContext)
+    //const { login, logout } = useContext(AuthContext)
     return (
         <>
             {/* // <div>Home

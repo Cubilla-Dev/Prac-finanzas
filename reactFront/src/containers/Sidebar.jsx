@@ -1,14 +1,9 @@
 import React, {useState} from 'react'
 
-const Sidebar = ({amoBookmark}) => {
+const Sidebar = ({amoBookmark, commet}) => {
     //para cambiar si ya lo guardaste  no
     const [saveBookmark, setSavebookmark] = useState(true)
 
-    const commet = () =>{
-        //parte de comentario
-        const element = document.querySelector("#elementToScrollTo");
-        element.scrollIntoView({ behavior: "smooth" });
-    }
     return (
         <div style={{backgroundColor: 'green', width: '100px', height: '1000px'}}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -18,7 +13,7 @@ const Sidebar = ({amoBookmark}) => {
                         : <img src='/img/fvorite.svg' alt="favorite" />
                 }
             </div>
-            <div style={{ display: 'flex', alignItems: 'center' }} onClick={commet}>
+            <div style={{ display: 'flex', alignItems: 'center' }} onClick={() => commet()}>
                 <img src='/img/chat_bubble.svg' alt="chat_bubble" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }}>

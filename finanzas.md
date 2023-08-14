@@ -23,6 +23,12 @@
 - expense
 - name_expense
 
+### comments
+- comment_id **(PK)**
+- title_blog
+- comment
+- user_id **(FK)**
+
 ## Relaciones
 
 1. Un ***budgets*** _pertenece_ a ***registratins***

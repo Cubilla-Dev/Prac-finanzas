@@ -3,9 +3,7 @@ const path = require('path');
 const database = require('../models/db.requests')
 const controller = {}
 
-controller.index = (req, res) => {
-    res.send('hola mundo')
-}
+
 
 controller.presForm  = (req, res) => {
     try{
@@ -17,6 +15,7 @@ controller.presForm  = (req, res) => {
     }
 }
 
+//para descargar el pdf de presupuesto
 controller.dowlPDF = (req, res) => {
     try{
         //tiene que ser dinamico
@@ -32,14 +31,17 @@ controller.dowlPDF = (req, res) => {
     }
 }
 
-// controller.logeo = (req, res) => {
-//     try {
-//         const {name, password} = req.body
-//         database.logeo(name, password)
-//         res.redirect('home')
-//     }catch{
+//para agregar un comentario a un blog
+controller.commentForm = (req, res) => {
+    try {   
+        const {titleToSave, comment } = req.body
+        console.log(titleToSave, comment)
+        database.setComment(titleToSave, comment)
+        res.send('valor recibido')
 
-//     }
-//}
+    }catch{
+        console.log('error al recibir los datos')
+    }
+}
 
 module.exports = controller

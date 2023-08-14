@@ -1,10 +1,18 @@
-import React, { useState, useContext } from 'react'
-import {Link, NavLink, useNavigate } from 'react-router-dom'
+import React, { useState, useContext, useEffect } from 'react'
+import {Link, NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { AuthContext } from '../auth/AuthContext'
 
 const Navbar = () => {
     const { logout, logged } = useContext(AuthContext)
-    const navigate = useNavigate()
+    const [regis, setRegis] = useState(false)
+    const location = useLocation()
+    const currentPath = location.pathname
+    //si esta en register no se mostrara los botones de login y register
+    useEffect(() =>{
+        if(currentPath === '/register'){
+            setRegis(true)
+        }
+    }, [currentPath])
 
     // const onLogout = () => {
     //     logout()
@@ -27,18 +35,22 @@ const Navbar = () => {
                             <NavLink to=''>Presupuesto 3</NavLink>
                         </li>
                     </ul>
-                    <div>
-                        { !logged ? 
-                            <Link to="/login">
-                                <button>Iniciar sesión</button>
-                            </Link>
-                            : <button onClick={() => logout()}>Cerrar sesion</button>}
-                        { !logged ? 
-                            <Link to="/register">
-                                <button>Registrarse</button>
-                            </Link> 
-                            : null}
-                    </div>
+                    {
+                        regis 
+                        ? null
+                        :   <div>
+                                { !logged ? 
+                                    <Link to="/login">
+                                        <button>Iniciar sesión</button>
+                                    </Link>
+                                    : <button onClick={() => logout()}>Cerrar sesion</button>}
+                                { !logged ? 
+                                    <Link to="/register">
+                                        <button>Registrarse</button>
+                                    </Link> 
+                                    : null}
+                            </div>
+                    }
                 </div>
             </nav>
         </header>
