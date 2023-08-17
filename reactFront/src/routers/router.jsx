@@ -7,6 +7,7 @@ import Home from "../containers/Home";
 import Login from '../containers/forms/Login'
 import Register from '../containers/forms/Register'
 import Blog from '../containers/Blog'
+import FormBlog from "../containers/forms/FormBlog";
 
 
 export const router = createBrowserRouter([
@@ -32,11 +33,18 @@ export const router = createBrowserRouter([
             </PublicRouter> 
     },
     {
-        path: '/blog',
+        path: '/formblog',
         element:
             <PrivateRouter>
-                <Blog/>
+                <FormBlog/>
             </PrivateRouter> 
+    },
+    {
+        path: 'blog/:id',
+        element: <Blog/>
+            // <PrivateRouter>
+            //     <Blog/>
+            // </PrivateRouter> 
     },
 
 ])

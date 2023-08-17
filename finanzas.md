@@ -8,10 +8,10 @@
 - email
 - password
 
-### budgets
+### budgets    //repensar parece que esta mal hecho
 - id_budget **(PK)**
 - id_user **(FK)**
-- money
+- money_income      puede tener varios ingresos modificar
 - date
 - name_expense
 - expense
@@ -26,8 +26,20 @@
 ### comments
 - comment_id **(PK)**
 - title_blog
-- comment
+- comment_blog
 - user_id **(FK)**
+
+### blogs FALTA AGREGAR EL LIKE NO LO CREE
+- blog_id **(PK)**
+- title
+- body
+- LIKE
+- CATEGORIAS    ###HACER OTRA TABLA
+
+### blog_saves   
+- blogsave_id **(PK)**
+- user_id **(FK)**
+- blog_id **(FK)**
 
 ## Relaciones
 

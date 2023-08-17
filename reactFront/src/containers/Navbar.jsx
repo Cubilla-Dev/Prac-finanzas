@@ -26,10 +26,10 @@ const Navbar = () => {
                 <div>
                     <ul>
                         <li>
-                            <NavLink to=''>Presupuesto</NavLink>
+                            <NavLink to='/formblog'>formulario del blog</NavLink>
                         </li>
                         <li>
-                            <NavLink to=''>Presupuesto 2</NavLink>
+                            <NavLink to='blog'>blog</NavLink>
                         </li>
                         <li>
                             <NavLink to=''>Presupuesto 3</NavLink>

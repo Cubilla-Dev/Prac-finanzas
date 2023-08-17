@@ -31,17 +31,60 @@ controller.dowlPDF = (req, res) => {
     }
 }
 
+//REPARAR
 //para agregar un comentario a un blog
 controller.commentForm = (req, res) => {
     try {   
-        const {titleToSave, comment } = req.body
-        console.log(titleToSave, comment)
-        database.setComment(titleToSave, comment)
+        const { title_blog, comment_blog } = req.body
+        console.log( title_blog, comment_blog)
+        database.setComment(user_id = 1, title_blog, comment_blog)
         res.send('valor recibido')
 
     }catch{
         console.log('error al recibir los datos')
     }
 }
+
+//para guardar los blogs escritos
+controller.setForm = (req, res) => {
+    try {   
+        const { title_blog, body_blog } = req.body
+        console.log( title_blog, body_blog)
+        database.setBlog(title_blog, body_blog)
+        res.send('valor recibido')
+
+    }catch{
+        console.log('error al recibir los datos')
+    }
+}
+
+
+//para enviar el blog completo
+controller.blogContex = (req, res) =>{
+    try{
+        const id = req.params.id
+        console.log('el id recibido es ', id)
+    }catch{
+        console.log('error al conseguir la id')
+    }
+}
+
+//para enviar al smallblog
+controller.getSmallBlog = (req, res) => {
+    try {   
+        database.getSmallBl()
+            .then((result) => {
+                //enviado a front
+                res.json(result)
+            })
+            .catch((error) => {
+                console.error('Error al recibir los datos de la db ',error)
+            })
+
+    }catch{
+        console.log('error al recibir los datos ')
+    }
+}
+
 
 module.exports = controller

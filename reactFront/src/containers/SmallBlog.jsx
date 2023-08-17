@@ -1,25 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 
-const SmallBlog = ({title, category}) => {
+const SmallBlog = () => {
+    const [ blog, setBlog ] = useState([])
     const navigate = useNavigate()
 
-    const refirecttoBlog = () =>{
-        navigate('/blog')
+    const refirecttoBlog = (id) =>{
+        navigate(`/blog/${id}`)
     }
 
+    useEffect(() => {
+        axios.get('http://localhost:3000/getSmallBlog') 
+            .then((response) => {
+                setBlog(response.data);
+            })
+            .catch((error) => {
+                console.error('Error al recibir los datos de SmallBlog: ', error);
+            });
+    }, []);
+    
     return (
-        <article style={{ 'backgroundColor': 'green', color: 'white' }} onClick={refirecttoBlog}>
-            <h2>{title}</h2>
-            <div>
-                {
-                    category.map((cate, index) => (
-                        <span key={index}>{cate} </span>
-                    ))
-                }
-            </div>
-        </article>
+        <div>
+            {
+                blog.map((blog, index) => (
+                    <article key={index} style={{ 'backgroundColor': 'green', color: 'white' }} onClick={ ()=>refirecttoBlog(blog.blog_id)}>
+                        <h2>{blog.title}</h2>
+                        <span>{}</span>
+                    </article>
+                ))
+            }
+        </div>
     )
 }
 

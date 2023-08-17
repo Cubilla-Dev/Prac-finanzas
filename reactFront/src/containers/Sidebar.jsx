@@ -13,7 +13,7 @@ const Sidebar = ({amoBookmark, commet}) => {
                         : <img src='/img/fvorite.svg' alt="favorite" />
                 }
             </div>
-            <div style={{ display: 'flex', alignItems: 'center' }} onClick={() => commet()}>
+            <div style={{ display: 'flex', alignItems: 'center' }} onClick={commet}>
                 <img src='/img/chat_bubble.svg' alt="chat_bubble" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
