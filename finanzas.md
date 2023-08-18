@@ -29,17 +29,32 @@
 - comment_blog
 - user_id **(FK)**
 
-### blogs FALTA AGREGAR EL LIKE NO LO CREE
+### blogs 
 - blog_id **(PK)**
 - title
 - body
-- LIKE
-- CATEGORIAS    ###HACER OTRA TABLA
+- like_id **(FK)**
+- cate_id **(FK)**
+
+### categorys
+- cate_id **(PK)**
+- cate_name
+
+### cate_body_values
+- cate_body_id **(PK)**
+- cate_id **(FK)**
+- cate_body_value
 
 ### blog_saves   
 - blogsave_id **(PK)**
 - user_id **(FK)**
 - blog_id **(FK)**
+
+### likes
+- like_id **(PK)**
+- blog_id **(FK)**
+- user_id **(FK)**
+
 
 ## Relaciones
 

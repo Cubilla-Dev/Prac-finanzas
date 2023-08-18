@@ -66,9 +66,24 @@ const getSmallBl = () =>{
     })
 }
 
+const getBlog = (id) =>{
+    return new Promise((resolve, reject)=>{
+        const addSql = 'SELECT * FROM blogs WHERE blog_id = ?';
+        connection.query(addSql, [id], (err, result)=>{
+            if(err){
+                console.log('[SELECT BLOG ERROR] - ', err.message)
+            }else{
+                //devolvemos una promesa con todo los datos
+                resolve(result)
+            }
+        })
+    })
+}
+
 
 module.exports = {
     setComment,
     setBlog,
-    getSmallBl
+    getSmallBl,
+    getBlog
 }

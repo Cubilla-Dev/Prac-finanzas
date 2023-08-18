@@ -63,7 +63,13 @@ controller.setForm = (req, res) => {
 controller.blogContex = (req, res) =>{
     try{
         const id = req.params.id
-        console.log('el id recibido es ', id)
+        database.getBlog(id)
+            .then((result) => {
+                res.json(result)
+            })
+            .catch((error) => {
+                console.error('Error al obtener los datos de blogs ', error)
+            })
     }catch{
         console.log('error al conseguir la id')
     }

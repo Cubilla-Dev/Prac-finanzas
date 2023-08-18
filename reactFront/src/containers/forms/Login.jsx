@@ -7,6 +7,7 @@ const Login = () => {
 
     const onSubmit = (data) => {
         axios.post('http://127.0.0.1:3000/login', data)
+        //axios.post('/login', data)
             .then(response => {
                 const token = response.data.token;
                 localStorage.setItem('token', token);

@@ -1,10 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState} from 'react';
+import { useLocation } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-const Blog = ({ titleBlog, body }) => {
+const Blog = ({titleBlog, body}) => {
+    const location = useLocation();
+    const parts = location.pathname.split('/')
+    const id = parts[parts.length - 1]
+    
     const commetRef = useRef();
+    const [ blogObt, setBlogObt ] = useState([])
 
     const commet = () => {
         // parte de comentario
@@ -12,14 +18,33 @@ const Blog = ({ titleBlog, body }) => {
         console.log('Form commet');
     };
 
+    console.log(blogObt[0]?.title)
+
+    useEffect(()=>{
+        axios.get(`http://localhost:3000/blog/${id}`)
+            .then((response) => {
+                setBlogObt(response.data)
+            })
+            .catch((error) => {
+                console.error('Error al obtener los datos de blog ', error)
+            })
+    }, [])
+
     return (
         <div>
-            <Sidebar commet={commet} />
+            {/* <Sidebar commet={commet} /> */}
             <article>
-                <h2>{titleBlog}</h2>
-                <p>{body}</p>
+                <h1>Data</h1>
+                {
+                    blogObt.map((blog, index) => (
+                        <div key={index}>
+                            <h2>{blog.title}</h2>
+                            <p>{blog.body}</p>
+                        </div>
+                    ))
+                }
                 <div ref={commetRef}>final</div>
-                <FormComment titleComm={titleBlog} />
+                <FormComment titleComm={blogObt[0]?.title} />
             </article>
         </div>
     );

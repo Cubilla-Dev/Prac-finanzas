@@ -9,6 +9,10 @@ const SmallBlog = () => {
 
     const refirecttoBlog = (id) =>{
         navigate(`/blog/${id}`)
+        // axios.get(`http://localhost:3000/blog/${id}`)
+        //     .catch((error) => {
+        //         console.error('Error al enviar la id del blog: ', error);
+        //     });
     }
 
     useEffect(() => {
