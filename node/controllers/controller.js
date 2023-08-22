@@ -92,5 +92,21 @@ controller.getSmallBlog = (req, res) => {
     }
 }
 
+//para enviar data y recibir sidebar
+controller.getSidebar = (req, res) => {
+    try {   
+        database.getSidebar()
+            .then((result) => {
+                //enviado a front
+                res.json(result)
+            })
+            .catch((error) => {
+                console.error('Error al recibir los datos de la db ',error)
+            })
+
+    }catch{
+        console.log('error al recibir los datos ')
+    }
+}
 
 module.exports = controller

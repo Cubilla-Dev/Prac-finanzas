@@ -1,0 +1,16 @@
+.blog-list {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.blog-item {
+    flex-basis: calc(50% - 20px);
+    background-color: green;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 10px;
+}

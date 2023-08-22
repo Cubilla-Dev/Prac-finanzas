@@ -80,10 +80,26 @@ const getBlog = (id) =>{
     })
 }
 
+//falta terminar
+const getSidebar = (id) =>{
+    return new Promise((resolve, reject)=>{
+        const addSql = 
+        connection.query(addSql, [id], (err, result)=>{
+            if(err){
+                console.log('[SELECT SIDEBAR ERROR] - ', err.message)
+            }else{
+                //devolvemos una promesa con todo los datos
+                resolve(result)
+            }
+        })
+    })
+}
+
 
 module.exports = {
     setComment,
     setBlog,
     getSmallBl,
-    getBlog
+    getBlog,
+    getSidebar
 }

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import {Link, NavLink, useNavigate, useLocation } from 'react-router-dom'
-import { AuthContext } from '../auth/AuthContext'
+import { AuthContext } from '../context/auth/AuthContext'
+import '../style/navbar.css'
 
 const Navbar = () => {
     const { logout, logged } = useContext(AuthContext)
@@ -14,31 +15,22 @@ const Navbar = () => {
         }
     }, [currentPath])
 
-    // const onLogout = () => {
-    //     logout()
-    //     navigate('/login')
-    // }
-
     return (
         <header>
             <nav>
-                <Link to='/'>Inicio</Link>
-                <div>
-                    <ul>
-                        <li>
-                            <NavLink to='/formblog'>formulario del blog</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to='blog'>blog</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to=''>Presupuesto 3</NavLink>
-                        </li>
-                    </ul>
+                {/* aca tiene que estar una imagen del logo */}
+                <div className="logo">
+                {/* Agrega aquí la imagen de tu logo */}
+                </div>
+                <div  className="nav-links">
+                    <NavLink to='/formblog'>formulario del blog</NavLink>
+                    <NavLink to='blog'>blog</NavLink>
+                    <NavLink to=''>Presupuesto 3</NavLink>
+
                     {
                         regis 
                         ? null
-                        :   <div>
+                        :   <div className="auth-buttons">
                                 { !logged ? 
                                     <Link to="/login">
                                         <button>Iniciar sesión</button>

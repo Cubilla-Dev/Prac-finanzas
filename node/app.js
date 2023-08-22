@@ -14,13 +14,13 @@ app.use(express.json())
 // }));
 
 //mejorar para que sea mas seguro
-//app.use(cors()); 
+app.use(cors()); 
 
-app.use((req, res, next) => {
-    res.append('Access-Control-Allow-Origin', 'http://localhost:5173'); 
-    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    next();
-});
+// app.use((req, res, next) => {
+//     res.append('Access-Control-Allow-Origin', 'http://localhost:5173'); 
+//     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//     next();
+// });
 
 // app.use(cors({
 //     origin: 'http://localhost:5173',

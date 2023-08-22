@@ -1,23 +1,17 @@
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
+// import axios from 'axios'
+import useFormData from '../../hook/useFormData'
+
 
 const Login = () => {
     const {register, handleSubmit, formState: { errors } } = useForm()
 
+    const {error, peticion} = useFormData()
 
     const onSubmit = (data) => {
-        axios.post('http://127.0.0.1:3000/login', data)
-        //axios.post('/login', data)
-            .then(response => {
-                const token = response.data.token;
-                localStorage.setItem('token', token);
-                window.location.reload();
-            })
-            .catch((error) => {
-                // Manejar cualquier error que ocurra durante la solicitud
-                console.error(error);
-            });
+        peticion('post', 'http://127.0.0.1:3000/login', data)
     }
+
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>

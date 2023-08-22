@@ -1,5 +1,5 @@
 import React,{ useContext} from 'react'
-import { AuthContext } from '../auth/AuthContext'
+import { AuthContext } from '../context/auth/AuthContext'
 import Navbar from './Navbar'
 import SmallBlog from './SmallBlog'
 
