@@ -1,6 +1,6 @@
 const connection = require('../database/db')
 
-
+//cambiando a sequelize
 const register = (firtname, email, password) => {
     return new Promise((resolve, reject)=>{
         const addSql = 'INSERT INTO registrations (name, email, password) VALUES (?, ?, ?)'

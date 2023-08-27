@@ -3,14 +3,23 @@ const path = require('path');
 const { encrypt, compare } = require('../helpers/handleBcrypt')
 const { obtainPass, obtainEmail, register } = require('../models/authModel')
 const jwt = require('jsonwebtoken')
+const { Register } = require('../models/authSequelize')
 
 
 const registerCtrl = async (req, res) => {
     try {
         
         const { name, email, password } = req.body
+        console.log('DATOS RECIBIDOS YA ', name, email)
         const passwordhash = await encrypt(password)
-        const checkRegist = await register(name, email, passwordhash)
+        const checkRegist = await Register(
+            {
+                name: name,
+                email: email,
+                password: passwordhash
+            }
+        )
+        console.log("VER QUE DATOS DEVUEVE",checkRegist)
         if(checkRegist){
                 // Si el usuario es autenticado exitosamente, generar un token
             const secretKey = 'tu_clave_secreta'; // Clave secreta para firmar el token (puede ser cualquier string)

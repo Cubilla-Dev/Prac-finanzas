@@ -25,6 +25,7 @@ const connection = require('../database/db')
 //     })
 // }
 
+
 const setComment = (user_id, title, comment) =>{
     return new Promise((resolve, reject)=>{
         const addSql = 'INSERT INTO comments (user_id, title_blog, comment_blog) VALUES (?, ?, ?)';
@@ -38,19 +39,20 @@ const setComment = (user_id, title, comment) =>{
     })
 }
 
+//pasare a sequelize    
 //se hara modificaciones a la db y tendre que cambiar esto tambien
-const setBlog = (title, body) =>{
-    return new Promise((resolve, reject)=>{
-        const addSql = 'INSERT INTO blogs (title, body) VALUES (?, ?)';
-        connection.query(addSql, [title, body], (err, result)=>{
-            if(err){
-                console.log('[COMMENT ERROR] - ', err.message)
-            }else{
-                console.log('Se registro el comentario')
-            }
-        })
-    })
-}
+// const setBlog = (title, body) =>{
+//     return new Promise((resolve, reject)=>{
+//         const addSql = 'INSERT INTO blogs (title, body) VALUES (?, ?)';
+//         connection.query(addSql, [title, body], (err, result)=>{
+//             if(err){
+//                 console.log('[COMMENT ERROR] - ', err.message)
+//             }else{
+//                 console.log('Se registro el comentario')
+//             }
+//         })
+//     })
+// }
 
 const getSmallBl = () =>{
     return new Promise((resolve, reject)=>{
@@ -98,7 +100,6 @@ const getSidebar = (id) =>{
 
 module.exports = {
     setComment,
-    setBlog,
     getSmallBl,
     getBlog,
     getSidebar
