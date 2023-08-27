@@ -37,7 +37,7 @@ const Sidebar = ({amoBookmark, commet}) => {
                         //falta reparar eso
                         saveSidebar[0]?.like
                             ? <img src='/img/favorite_black.svg' alt="favorite_black" />
-                            : <img src='/img/fvorite.svg' alt="favorite" />
+                            : <img src='/img/favorite.svg' alt="favorite" />
                     }
                 </div>
                 <div className='commet' onClick={commet}>

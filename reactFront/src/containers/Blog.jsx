@@ -6,6 +6,7 @@ import axios from 'axios';
 import '../style/blog.css'
 
 const Blog = () => {
+    //para obtener el valor de id y para asi enviarlo
     const location = useLocation();
     const parts = location.pathname.split('/')
     const id = parts[parts.length - 1]
@@ -14,7 +15,7 @@ const Blog = () => {
     const [ blogObt, setBlogObt ] = useState([])
 
     const commet = () => {
-        // parte de comentario
+        // para ir hasta el final hasta el comentario
         commetRef.current.scrollIntoView({ behavior: 'smooth' });
         console.log('Form commet');
     };
@@ -25,6 +26,7 @@ const Blog = () => {
         axios.get(`http://localhost:3000/blog/${id}`)
             .then((response) => {
                 setBlogObt(response.data)
+                console.log(response.data)
             })
             .catch((error) => {
                 console.error('Error al obtener los datos de blog ', error)
@@ -37,8 +39,8 @@ const Blog = () => {
                 <Sidebar commet={commet} />
                 <article className='blog-items'>
                     {
-                        blogObt.map((blog, index) => (
-                            <div key={index}>
+                        blogObt.map((blog) => (
+                            <div key={blog.blog_id}>
                                 <h2>{blog.title}</h2>
                                 <p>{blog.body}</p>
                             </div>
