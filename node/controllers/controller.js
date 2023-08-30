@@ -1,6 +1,5 @@
 const createPDF = require('../container/createPdf')
 const path = require('path');
-const database = require('../models/db.requests')
 const {SetBlog, SetComment} = require('../models/db.sequelize');
 const controller = {}
 

@@ -1,20 +1,6 @@
 const connection = require('../database/db')
 
-//cambiando a sequelize
-const register = (firtname, email, password) => {
-    return new Promise((resolve, reject)=>{
-        const addSql = 'INSERT INTO registrations (name, email, password) VALUES (?, ?, ?)'
-        connection.query(addSql, [firtname, email, password], (err, result)=>{
-            if(err){
-                console.log('[REGISTER ERROR] - ', err.message)
-            }else{
-                console.log('SE REGISTRO')
-                resolve(true)
-            }
-        })
-    })
-}
-
+//cambiando a secuelize
 //mejorar, y verificar si ya funciona
 const obtainEmail = (email) => {
     return new Promise((resolve, reject)=>{
@@ -58,4 +44,4 @@ const obtainPass = (email) => {
     })
 }
 
-module.exports = { obtainPass, register, obtainEmail }
+module.exports = { obtainPass, obtainEmail }

@@ -8,6 +8,7 @@ import Login from '../containers/forms/Login'
 import Register from '../containers/forms/Register'
 import Blog from '../containers/Blog'
 import FormBlog from "../containers/forms/FormBlog";
+import NextUi from '../containers/NextUi'
 
 
 export const router = createBrowserRouter([
@@ -16,6 +17,13 @@ export const router = createBrowserRouter([
         element:
             //<PublicRouter>
                 <Home/>
+            //</PublicRouter>
+    },
+    {
+        path: '/practica',
+        element:
+            //<PublicRouter>
+                <NextUi/>
             //</PublicRouter>
     },
     {

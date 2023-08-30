@@ -9,7 +9,6 @@ const types = {
 };
 
 const authReducer = (state = {}, action) => {
-    console.log('esto es la action ' + action.type)
     switch (action.type) {
         case types.login: 
             return {
@@ -22,15 +21,13 @@ const authReducer = (state = {}, action) => {
                 logged: false, 
             };
         default:
-        return state;
+            return state;
     }
 };
 
 const AuthProvider = ({children}) => {
     const init = () => {
         const token = localStorage.getItem("token");
-        //funciona
-        // console.log(!!token)
         return {
             logged: !!token,
         };
