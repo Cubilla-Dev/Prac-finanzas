@@ -20,12 +20,12 @@ const Blog = () => {
         console.log('Form commet');
     };
 
-    console.log(blogObt[0]?.title)
+    console.log('valor es ',blogObt[0]?.title)
 
     useEffect(()=>{
         axios.get(`http://localhost:3000/blog/${id}`)
             .then((response) => {
-                setBlogObt(response.data)
+                setBlogObt([response.data])
                 console.log(response.data)
             })
             .catch((error) => {
