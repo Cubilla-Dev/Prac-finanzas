@@ -7,11 +7,11 @@ import {NextUIProvider} from "@nextui-org/react";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
       <NextUIProvider>
+    <AuthProvider>
         <RouterProvider router={router} />
-      </NextUIProvider>
     </AuthProvider>
+      </NextUIProvider>
   </React.StrictMode>,
 )
 

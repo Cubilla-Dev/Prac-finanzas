@@ -8,7 +8,7 @@
 - email
 - password
 
-### budgets    //repensar parece que esta mal hecho
+### budgets    //repensar parece que esta mal hecho   //no esta hecho todavi COMO TABLA
 - id_budget **(PK)**
 - id_user **(FK)**
 - money_income      puede tener varios ingresos modificar
@@ -16,7 +16,7 @@
 - name_expense
 - expense
 
-### ant_expenses
+### ant_expenses  //NO ESTA HECHO TODAVIA COMO TABLA
 - id_ants **(PK)**
 - id_user **(FK)**
 - date
@@ -29,18 +29,18 @@
 - comment_blog
 - user_id **(FK)**
 
-### blogs 
+### blogs // el blog con los datos 
 - blog_id **(PK)**
 - title
 - body
 - like_id **(FK)**
 - cate_id **(FK)**
 
-### categorys
+### categorys  
 - cate_id **(PK)**
 - cate_name
 
-### cate_body_values
+### cate_body_values //
 - cate_body_id **(PK)**
 - cate_id **(FK)**
 - cate_body_value
@@ -50,10 +50,10 @@
 - user_id **(FK)**
 - blog_id **(FK)**
 
-### likes
+### likes  
 - like_id **(PK)**
-- blog_id **(FK)**
-- user_id **(FK)**
+- blog_id **(FK)** 
+- user_id **(FK)** 
 
 
 ## Relaciones

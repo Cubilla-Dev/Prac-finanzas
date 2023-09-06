@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import Navbar from '../Navbar'
+import Navbar from '../Navbar/Navbar'
 import useFormData from '../../hook/useFormData'
 
 const Register = () => {
