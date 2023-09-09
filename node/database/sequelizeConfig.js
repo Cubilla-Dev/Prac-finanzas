@@ -1,10 +1,13 @@
 const { Sequelize } = require('sequelize')
+const config = require('../config')
+require('dotenv').config()
 
 //Configuracion de base de datos
-const db_sequelize = new Sequelize('finanzas', 'root', '', {
-    host: 'localhost',
+const db_sequelize = new Sequelize(
+    config.db.name, config.db.user, config.db.pass, {
+    host: config.db.host,
     dialect: 'mysql',
-    port: 3306,
+    port: config.db.port,
 })
 
 //Prueba de conexion
