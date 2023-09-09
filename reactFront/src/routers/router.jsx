@@ -6,7 +6,7 @@ import Budget from "../containers/forms/budget";
 import Home from "../containers/Home";
 import Login from '../containers/forms/Login'
 import Register from '../containers/forms/Register'
-import Blog from '../containers/Blog'
+import Blog from '../containers/Blog/Blog'
 import FormBlog from "../containers/forms/FormBlog";
 import NextUi from '../containers/NextUi'
 

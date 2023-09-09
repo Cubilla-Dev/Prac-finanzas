@@ -26,12 +26,14 @@ const authReducer = (state = {}, action) => {
 };
 
 const AuthProvider = ({children}) => {
+
     const init = () => {
         const token = localStorage.getItem("token");
         return {
             logged: !!token,
         };
     };
+    
     //funciona
     const [state, dispatch] = useReducer(authReducer, {}, init); 
     console.log(state)

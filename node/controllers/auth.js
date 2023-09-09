@@ -1,5 +1,4 @@
 const path = require('path');
-//const database = require('../models/db.requests')
 const { encrypt, compare } = require('../helpers/handleBcrypt')
 const { obtainPass, obtainEmail, register } = require('../models/authModel')
 const jwt = require('jsonwebtoken')
@@ -45,22 +44,25 @@ const loginCtrl = async (req, res) => {
                 email: email
             }
         })      
-        console.log('Esto es data ', data[0].password) //data.dataValues.password
-        // if(!passObtaiDB){
-        //     res.status(404)
-        //     res.send({error: 'Password not found'})
-        // }
-        // const checkPassword = await compare(password, passObtaiDB)
-        // if (checkPassword){
-        //         // Si el usuario es autenticado exitosamente, generar un token
-        //     const secretKey = 'tu_clave_secreta'; // Clave secreta para firmar el token (puede ser cualquier string)
-        //     const user = {id: user_id}
-        //     const token = jwt.sign(user, secretKey, { expiresIn: '1h' }); // El token expirará en 1 hora
-        //     res.send({
-        //         redirect: '/',
-        //         token: token
-        //     })
-        // }
+        console.log('Esto es data ', data)
+        const passObtaiDB = data.dataValues.password
+        const user_id = data.dataValues.user_id
+        if(!passObtaiDB){
+            res.status(404)
+            res.send({error: 'Password not found'})
+        }
+        const checkPassword = await compare(password, passObtaiDB)
+        console.log('Esto es checkPassword ', checkPassword)
+        if (checkPassword){
+                // Si el usuario es autenticado exitosamente, generar un token
+            const secretKey = 'tu_clave_secreta'; // Clave secreta para firmar el token (puede ser cualquier string)
+            const user = {id: user_id}
+            const token = jwt.sign(user, secretKey, { expiresIn: '1h' }); // El token expirará en 1 hora
+            res.send({
+                redirect: '/',
+                token: token
+            })
+        }
     }catch{
         res.status(404)
         res.send({error: 'No se puedo logearse'})
