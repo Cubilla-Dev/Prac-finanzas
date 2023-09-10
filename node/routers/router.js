@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router()
 const controller = require('../controllers/controller')
+const passport = require('../helpers/passport')
 
 router.get('/getSmallBlog', controller.getSmallBlog);
 router.post('/presupuesto', controller.presForm) //cambiar a ingles el nombre 

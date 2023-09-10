@@ -5,7 +5,6 @@ const router = require('./routers/router')
 const routerAuth = require('./routers/routerAuth')
 
 const db_sequelize = require('./database/sequelizeConfig');  // Asegúrate de que la ruta sea correcta
-const SetBlog = require('./models/db.sequelize'); // Asegúrate de que la ruta sea correcta
 
 // ... aquí importas tus rutas y otros middleware
 
@@ -18,8 +17,7 @@ db_sequelize.sync()
         console.error('Error al sincronizar la base de datos:', error);
     });
 
-// Middleware para inicializar Passport
-app.use(passport.initialize());
+
 app.use(express.json())
 
 // Configura CORS para permitir solicitudes desde http://127.0.0.1:5173

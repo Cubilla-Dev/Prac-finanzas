@@ -1,5 +1,4 @@
 const path = require('path');
-//const database = require('../models/db.requests')
 const { encrypt, compare } = require('../helpers/handleBcrypt')
 const { obtainPass, obtainEmail, register } = require('../models/authModel')
 const jwt = require('jsonwebtoken')

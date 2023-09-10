@@ -1,4 +1,4 @@
-const connection = require('../database/db')
+// const connection = require('../database/db')
 
 //cambiando a secuelize
 //mejorar, y verificar si ya funciona
