@@ -1,17 +1,15 @@
-import React,{ useContext} from 'react'
-import { AuthContext } from '../context/auth/AuthContext'
+import React from 'react'
+import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
-import SmallBlog from './SmallBlog'
-
-let titu = 'Como mejorar tus finanzas'
-let arra = ['#mejora', '#fiananzas', '#personal']
 
 const Home = () => {
     
     return (
         <>
             <Navbar/>
-            <SmallBlog/>
+            <div className='max-w-screen overflow-x-hidden' >
+                <Outlet />
+            </div>
         </>
     )
 }

@@ -9,50 +9,54 @@ import Register from '../containers/forms/Register'
 import Blog from '../containers/Blog'
 import FormBlog from "../containers/forms/FormBlog";
 import NextUi from '../containers/NextUi'
-
+import SmallBlog from "../containers/SmallBlog";
 
 export const router = createBrowserRouter([
     {
+        
         path: '/',
         element:
-            //<PublicRouter>
+            <PublicRouter>
                 <Home/>
-            //</PublicRouter>
+            </PublicRouter>,
+        errorElement: <p>error</p>,
+        children: [
+            {
+                index: true,
+                element: <SmallBlog/>
+            },
+            {
+                path: '/login',
+                element: <Login/>
+            },
+            {
+                path: '/register',
+                element: <Register/>
+            },
+        ]
     },
     {
-        path: '/practica',
+        path: "/",
         element:
-            //<PublicRouter>
-                <NextUi/>
-            //</PublicRouter>
-    },
-    {
-        path: '/login',
-        element:
-            <PublicRouter>
-                <Login/>
-            </PublicRouter> 
-    },
-    {
-        path: '/register',
-        element:
-            <PublicRouter>
-                <Register/>
-            </PublicRouter> 
-    },
-    {
-        path: '/formblog',
-        element:
-            <PrivateRouter>
-                <FormBlog/>
-            </PrivateRouter> 
-    },
-    {
-        path: '/blog/:id',
-        element: <Blog/>
-            // <PrivateRouter>
-            //     <Blog/>
-            // </PrivateRouter> 
-    },
+                <PrivateRouter>
+                    < Home />,
+                </PrivateRouter>,
+        errorElement: <p>Error</p>,
 
+        children:[
+            {
+                path: '/formblog',
+                element: <FormBlog/>
+            },
+            {
+                path: '/blog/:id',
+                element: <Blog/>
+            },
+        ]
+    },
+    {
+        path:"*",
+        element: <p>vuelve</p>
+    },
 ])
+

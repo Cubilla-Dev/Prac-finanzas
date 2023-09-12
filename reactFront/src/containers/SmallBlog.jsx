@@ -13,9 +13,10 @@ const SmallBlog = () => {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3000/getSmallBlog') 
+        axios.get('http://localhost:3000/smallblog') 
             .then((response) => {
                 setBlog(response.data);
+                console.log(response.data)
             })
             .catch((error) => {
                 console.error('Error al recibir los datos de SmallBlog: ', error);

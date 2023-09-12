@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import Navbar from '../Navbar'
 import useFormData from '../../hook/useFormData'
 
 const Register = () => {
@@ -15,7 +14,6 @@ const Register = () => {
 
     return (
         <>
-            <Navbar/>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input {...register('name',{required: true, maxLength: 20})} />
                 <input {...register('email', {required: true, maxLength: 20})} />

@@ -7,7 +7,7 @@ const Sidebar = ({amoBookmark, commet}) => {
     const [saveSidebar, setSaveSidebar] = useState([])
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/getSidebar`)
+        axios.get(`http://localhost:3000/sidebar`)
             .then((response) => {
                 console.log('Data obtenida Sidebar',response.data)
                 setSaveSidebar(response.data)

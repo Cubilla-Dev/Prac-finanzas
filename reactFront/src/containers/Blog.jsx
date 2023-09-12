@@ -64,10 +64,15 @@ const FormComment = ({ titleComm }) => {
     } = useForm();
 
     const onSubmit = (data) => {
+        const token = localStorage.getItem("token")
         axios
-            .post('http://127.0.0.1:3000/comment', {
+            .post('http://127.0.0.1:3000/blog/comment', {
                 title_blog: titleComm,
                 comment_blog: data.comment_blog,
+            }, {
+                Headers: {
+                    'Authorization': 'Bearer ' + token
+                }
             })
             .then((response) => {
                 //para limpiar los inputs
