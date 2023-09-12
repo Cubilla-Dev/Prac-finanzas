@@ -21,6 +21,4 @@ const Register = db_sequelize.define('registrations', {
 });
 
 
-module.exports = { 
-    Register,
-}
+module.exports = Register
